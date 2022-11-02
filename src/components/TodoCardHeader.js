@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react';
-import {useTodoDispatch, useTodoState} from '../store/ContextDispatch';
+import {actionType, useTodoDispatch, useTodoState} from '../store/ContextDispatch';
 import dayjs from 'dayjs';
 
 
@@ -10,7 +10,7 @@ const TodoCardHeader = () => {
 
     const onBaseDateChange = (date) => {
         todoDispatch({
-            type : "CHANGE_BASE_DATE",
+            type : actionType.CHANGE_BASE_DATE,
             baseDate : date
         });
     }

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faClose, faPencil} from '@fortawesome/free-solid-svg-icons';
-import {useTodoDispatch} from '../store/ContextDispatch';
+import {actionType, useTodoDispatch} from '../store/ContextDispatch';
 import Button from './Button';
 
 const closeBtnStyle = {
@@ -32,7 +32,7 @@ const TodoListItem = ({item, toggleItemCheck}) => {
 
         if (confirm) {
             todoDispatch({
-                type : "REMOVE_DATA",
+                type : actionType.REMOVE_DATA,
                 data : {
                     id : itemId
                 }
@@ -42,7 +42,7 @@ const TodoListItem = ({item, toggleItemCheck}) => {
 
     const onUpdateClick = () => {
         todoDispatch({
-            type : "CHANGE_DATA",
+            type : actionType.CHANGE_DATA,
             data : newItem
         });
 

@@ -31,17 +31,17 @@ const initData = {
 
 const reducer = (state, action) => {
     switch (action.type) {
-        case "CHANGE_BASE_DATE" :
+        case actionType.CHANGE_BASE_DATE :
             return {
                 ...state,
                 baseDate : action.baseDate
             }
-        case "CHANGE_DATES" :
+        case actionType.CHANGE_DATES :
             return {
                 ...state,
                 dates : action.dates
             }
-        case "ADD_DATA" :
+        case actionType.ADD_DATA :
 
             const d = {
                 ...action.data,
@@ -53,7 +53,7 @@ const reducer = (state, action) => {
                 store : [...state.store, d],
                 id : state.id+1
             }
-        case "CHANGE_DATA" :
+        case actionType.CHANGE_DATA :
             return {
                 ...state,
                 store : state.store.map(s => s.id === action.data.id ? {
@@ -61,7 +61,7 @@ const reducer = (state, action) => {
                     ...action.data
                 } : s)
             }
-        case "REMOVE_DATA" :
+        case actionType.REMOVE_DATA :
             return {
                 ...state,
                 store : state.store.filter(s => s.id !== action.data.id)
@@ -87,3 +87,11 @@ export function TodoProvider({ children }) {
 
 export const useTodoState = () => useContext(TodoStateContext);
 export const useTodoDispatch = () => useContext(TodoDispatchContext);
+
+export const actionType = {
+    CHANGE_BASE_DATE : "CHANGE_BASE_DATE",
+    CHANGE_DATES : "CHANGE_DATES",
+    ADD_DATA : "ADD_DATA",
+    CHANGE_DATA : "CHANGE_DATA",
+    REMOVE_DATA : "REMOVE_DATA"
+}

@@ -7,7 +7,7 @@ import ContainerCenter from '../components/ContainerCenter';
 import TodoList from '../components/TodoList';
 import TodoListItem from '../components/TodoListItem';
 import {create7day} from '../util/CommonUtil';
-import {useTodoDispatch, useTodoState} from '../store/ContextDispatch';
+import {actionType, useTodoDispatch, useTodoState} from '../store/ContextDispatch';
 import TodoFooter from '../components/TodoFooter';
 import Button from '../components/Button';
 import AddTodoModal from '../components/AddTodoModal';
@@ -21,14 +21,14 @@ const Home = () => {
 
     const onBaseDateChange = (newBaseDate) => {
         todoDispatch({
-            type : "CHANGE_BASE_DATE",
+            type : actionType.CHANGE_BASE_DATE,
             baseDate : newBaseDate
         });
     };
 
     const toggleItemCheck = (itemId, checked) => {
         todoDispatch({
-            type : "CHANGE_DATA",
+            type : actionType.CHANGE_DATA,
             data : {
                 id : itemId,
                 checked
@@ -38,7 +38,7 @@ const Home = () => {
 
     useEffect(() => {
         todoDispatch({
-            type : "CHANGE_DATES",
+            type : actionType.CHANGE_DATES,
             dates : create7day(todoState.baseDate)
         });
     }, [todoState.baseDate]);

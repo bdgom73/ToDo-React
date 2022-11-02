@@ -1,7 +1,7 @@
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Button from './Button';
-import {useTodoDispatch, useTodoState} from '../store/ContextDispatch';
+import {actionType, useTodoDispatch, useTodoState} from '../store/ContextDispatch';
 import {useState} from 'react';
 import dayjs from 'dayjs';
 
@@ -70,7 +70,7 @@ const AddTodoModal = ({close}) => {
         }
 
         todoDispatch({
-            type : "ADD_DATA",
+            type : actionType.ADD_DATA,
             data : newItem
         });
 
